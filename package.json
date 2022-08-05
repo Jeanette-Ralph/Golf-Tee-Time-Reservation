@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Jeanette-Ralph/Golf-Tee-Time-Reservation/issues"
   },
-  "homepage": "https://github.com/Jeanette-Ralph/Golf-Tee-Time-Reservation#readme"
+  "homepage": "https://github.com/Jeanette-Ralph/Golf-Tee-Time-Reservation#readme",
+  "dependencies": {
+    "bulma-start": "^0.0.5"
+  }
 }
