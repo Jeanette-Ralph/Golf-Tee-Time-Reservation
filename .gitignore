@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Ignore .dg for Dave's Notes
-.dg
+*.dg
