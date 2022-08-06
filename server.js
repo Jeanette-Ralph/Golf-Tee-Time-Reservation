@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 
 // Sets up session and connect to our Sequelize db
 const sess = {
+    // Very Secret Salt 
   secret: 'Super Ambitious Project',
   // Express session will use cookies by default, but we can specify options for those cookies by adding a cookies property to our session options.
   cookie: {
@@ -33,9 +34,9 @@ const sess = {
   }),
 };
 
-app.use(session(sess));
+// app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
