@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models/user');
+const { User } = require('../../models');
 
 // getting login and signup page
 router.get('/login', (req, res) => {
@@ -15,7 +15,8 @@ router.post('/signup', async (req, res) => {
                 last_name: req.body.last_name,
                 user_name: req.body.user_name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                role: req.body.role
             })
         return userData;
     } catch (err) {
