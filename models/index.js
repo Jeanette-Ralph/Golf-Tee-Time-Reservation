@@ -1,7 +1,7 @@
 const User = require('./User');
 const Players = require('./Players');
-const TeeTimes = require('./TeeTimes');
+const Teetimes = require('./Teetimes');
 
 // Add joins
 
-module.exports = { User, Players, TeeTimes };
+module.exports = { User, Players, Teetimes};
