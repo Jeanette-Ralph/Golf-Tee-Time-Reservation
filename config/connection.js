@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 let sequelize;
