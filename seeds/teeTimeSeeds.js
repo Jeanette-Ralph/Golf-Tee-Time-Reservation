@@ -1,4 +1,4 @@
-const { Teetimes } = require("../models");
+const { teeTimes } = require("../models");
 
 const teetimes = [
   {
@@ -31,5 +31,5 @@ const teetimes = [
   },
 ];
 
-const seedTeetimesData = () => Teetimes.bulkCreate(teetimesData);
+const seedTeetimesData = () => teeTimes.bulkCreate(teetimes);
 module.exports = seedTeetimesData;

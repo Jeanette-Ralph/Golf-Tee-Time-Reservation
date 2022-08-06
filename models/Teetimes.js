@@ -40,3 +40,5 @@ Teetimes.init(
     modelName: "teetimes",
   }
 );
+
+module.exports = Teetimes;
