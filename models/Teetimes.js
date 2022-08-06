@@ -3,7 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 // import our database connection from config.js
 const sequelize = require("../config/connection");
 
-class Teetimes extends Model {}
+class Teetimes extends Model { }
 
 Teetimes.init(
   {
@@ -40,3 +40,5 @@ Teetimes.init(
     modelName: "teetimes",
   }
 );
+
+module.exports = Teetimes;
