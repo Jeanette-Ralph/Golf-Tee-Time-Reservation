@@ -1,12 +1,15 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// getting login and signup page
+// for authenticating the user to view their profile
+const withAuth = require('../../utils/auth');
+
+// getting login and signup page, api/users/login
 router.get('/login', (req, res) => {
     res.render('login');
 });
 
-// creating user 
+// creating user, api/users/signup
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(
@@ -18,7 +21,27 @@ router.post('/signup', async (req, res) => {
                 password: req.body.password,
                 role: req.body.role
             })
+
+        // redirect to the login page
+        res.redirect('/login');
         return userData;
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+// creating a session to save the user info when they login 
+router.post('/login', async (req, res) => {
+    try {
+        const userData = await User.create(req.body);
+
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+
+            res.status(200).json(userData);
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -59,6 +82,24 @@ router.post('/login', async (req, res) => {
 
     } catch (err) {
         res.status(400).json(err);
+    }
+});
+
+// using withAAuth to only allow users access to the profile page
+router.get('/profile', withAuth, async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+        });
+
+        const user = userData.get({ plain: true });
+
+        res.render('profile', {
+            ...user,
+            logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 
