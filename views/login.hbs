@@ -2,21 +2,21 @@
 
     {{!-- login div --}}
     <div class="tile is-6">
-        <div class="tile is-child box">
+        <div class="tile is-child box login-div">
             <p class="title">Login</p>
 
-            {{!-- username --}}
+            {{!-- username, added an id to the input --}}
             <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Username">
+                    <input class="input" type="text" placeholder="Username" id="username-login">
                 </div>
             </div>
 
-            {{!-- passowrd --}}
+            {{!-- passowrd, added an id to the input --}}
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
+                    <input class="input" type="password" placeholder="Password" id="password-login">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -37,30 +37,30 @@
 
     {{!-- sign up div --}}
     <div class="tile is-6">
-        <div class="tile is-child box">
+        <div class="tile is-child box signup-div">
             <p class="title">Sign Up</p>
 
-            {{!-- first name --}}
+            {{!-- first name , added an id to the input--}}
             <div class="field">
                 <label class="label">First Name</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="First name">
+                    <input class="input" type="text" placeholder="First name" id="first-name">
                 </div>
             </div>
 
-            {{!-- last name --}}
+            {{!-- last name , added an id to the input--}}
             <div class="field">
                 <label class="label">Last Name</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Last name">
+                    <input class="input" type="text" placeholder="Last name" id="last-name">
                 </div>
             </div>
 
-            {{!-- email --}}
+            {{!-- email, added an id to the input --}}
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                    <input class="input is-danger" type="email" placeholder="Email input" value="hello@" id="email">
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -71,11 +71,12 @@
                 <p class="help is-danger">This email is invalid</p>
             </div>
 
-            {{!-- username --}}
+            {{!-- username, added an id to the input --}}
             <div class="field">
                 <label class="label">Username</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                    <input class="input is-success" type="text" placeholder="Text input" value="bulma"
+                        id="username-signup">
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
@@ -86,10 +87,10 @@
                 <p class="help is-success">This username is available</p>
             </div>
 
-            {{!-- paassword --}}
+            {{!-- paassword, added an id to the input--}}
             <div class="field">
                 <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
+                    <input class="input" type="password" placeholder="Password" id="password-signup">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -107,5 +108,6 @@
 
         </div>
     </div>
-
 </div>
+
+<script src="../public/js/login.js"></script>
