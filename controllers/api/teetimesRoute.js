@@ -5,7 +5,7 @@ const { Teetimes, User } = require('../../models');
 // GET all Tee Times 
 router.get('/', async (req, res) => {
   try {
-    // find all library cards and perform a JOIN to include all associated Readers
+    // find all Teetimes and associated Users
     const teetimesData = await Teetimes.findAll({
       include: [{ model: User }],
     });
