@@ -3,23 +3,33 @@ const { Teetimes, User, Players } = require("../../models");
 // need an util-auth if we go old ways with auth
 // const withAuth = require('../../utils/auth');
 
-router.get("/", function (req, res) {
-  res.render("landingPage");
+router.get("/", async (req, res) => {
+  try {
+    const timeData = await Teetimes.findAll();
+    const time = timeData.map((times) => times.get({ plain: true }));
+    // this gets us to the page and times?
+    // res.render("landingPage", { time });
+
+    res.status(200).json(timeData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // router.get("/", async (req, res) => {
 //   try {
 //     const teeTime = await Teetimes.findAll({
-//       include: [{ model: User }, { model: Players, through: User }],
+//       include: [{ model: User }],
 //     });
 //     // Serialize data so the template can read it
-//     const times = teeTime.map((times) => times.get({ plain: true }));
+//     // const times = teeTime.map((times) => times.get({ plain: true }));
 //     // Pass serialized data and session flag into template
 //     res.render("landingPage", {
-//       times,
+//       // times,
 //       // render info based on session
 //       // logged_in: req.session.logged_in
 //     });
+//     res.status(200).json(timeData);
 //   } catch (err) {
 //     res.status(500).json(err);
 //   }

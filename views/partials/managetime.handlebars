@@ -1,0 +1,37 @@
+{{!-- tee times cards with update and cancel --}}
+
+
+{{#each time as |teeTime|}}            
+     <div class="tee-times">
+     {{!-- booked tee times --}}
+            {{!-- little cards for times? can cancel too? --}}
+        <div class="card">
+            <div class="card-content">
+                <p class="title">
+                {{!-- the tee time --}}
+                </p>
+                <p class="subtitle">
+                {{!-- add player names? --}}
+                {{#each players as |playersName|}}
+                {{!-- loop through and get player names --}}
+                <p>{{players.player_name}}</p>
+                {{/each}}
+                </p>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                <span>
+                    {{!-- <button class="button">Button</button> --}}
+                    <a href="#">Cancel</a>
+                </span>
+                </p>
+                <p class="card-footer-item">
+                <span>
+                    {{!-- <button class="button">Button</button> --}}
+                    <a href="#">Update tee time Here</a>
+                </span>
+                </p>
+            </footer>
+        </div>
+     </div>
+    {{/each}}
