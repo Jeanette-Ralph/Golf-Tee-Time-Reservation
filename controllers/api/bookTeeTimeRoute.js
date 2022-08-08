@@ -1,25 +1,46 @@
 const router = require("express").Router();
-const { Tee_Time, User, Players } = require("../../models");
+const { Teetimes, User, Players } = require("../../models");
 // need an util-auth if we go old ways with auth
 // const withAuth = require('../../utils/auth');
 
 router.get("/", async (req, res) => {
   try {
-    const teeTime = await Tee_Time.findAll({
-      include: [{ model: Users }, { model: Players, through: User }],
-    });
-    res.status(200).json(teeTime);
+    const timeData = await Teetimes.findAll();
+    const time = timeData.map((times) => times.get({ plain: true }));
+    // this gets us to the page and times?
+    // res.render("landingPage", { time });
+
+    res.status(200).json(timeData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+// router.get("/", async (req, res) => {
+//   try {
+//     const teeTime = await Teetimes.findAll({
+//       include: [{ model: User }],
+//     });
+//     // Serialize data so the template can read it
+//     // const times = teeTime.map((times) => times.get({ plain: true }));
+//     // Pass serialized data and session flag into template
+//     res.render("landingPage", {
+//       // times,
+//       // render info based on session
+//       // logged_in: req.session.logged_in
+//     });
+//     res.status(200).json(timeData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // should /:id be /:time?
 
 // first attempt
 // router.put("/:id", async (req, res) => {
 //   try {
-//     const timeData = await Tee_Time.update(req.body, {
+//     const timeData = await Teetimes.update(req.body, {
 //       where: { time: req.params.time }
 //     });
 //     if (!timeData) {
@@ -79,7 +100,7 @@ router.put("/:id", (req, res) => {
 // delete time
 router.delete("/:id", async (req, res) => {
   try {
-    const timeData = await Tee_Time.update(req.body, {
+    const timeData = await Teetimes.update(req.body, {
       where: { time: req.params.time },
     });
     if (!timeData) {

@@ -8,33 +8,16 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
-    <link rel="stylesheet" href="public/css/style.css">
+    {{!-- bulma --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
     <title>Golf Tee Time Reservation</title>
+    {{!-- added this for icons to show on forms --}}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to the Four Seasons Museum</h1>
-    </header>
-    <nav>
-        <a href="/">Home</a>
-        {{#if loggedIn}}
-        <button id="logout" class="btn-no-style">Logout</button>
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
-    </nav>
-    <main>
-        <aside>
-            <h2>Enjoy the galleries!</h2>
-        </aside>
-        <div class="gallery">
-            {{{body}}}
-        </div>
-    </main>
-    {{#if loggedIn}}
-    <script src="/js/logout.js"></script>
-    {{/if}}
+    {{{body}}}
 </body>
 
 </html>
