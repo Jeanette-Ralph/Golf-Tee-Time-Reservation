@@ -21,9 +21,6 @@ Teetimes.init(
     availability: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      // validate: {
-      //   isEmail: true,
-      // },
     },
     price: {
       type: DataTypes.DECIMAL(10, 2),
