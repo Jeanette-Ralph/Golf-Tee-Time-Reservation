@@ -3,6 +3,9 @@
 {{!-- profile partial --}}
 {{>profile}}
 {{!-- booked tee time partial?--}}
+{{#each time as |tee_time_start|}}
+{{>managetime}}
+{{/each}}
 
 {{!-- add players --}}
 

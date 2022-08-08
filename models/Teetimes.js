@@ -17,12 +17,13 @@ Teetimes.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    // email?
     availability: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      validate: {
-        isEmail: true,
-      },
+      // validate: {
+      //   isEmail: true,
+      // },
     },
     user_id: {
       type: DataTypes.INTEGER,
