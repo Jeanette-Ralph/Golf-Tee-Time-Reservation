@@ -19,7 +19,7 @@ Teetimes.init(
     },
     // email?
     availability: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.TEXT,
       allowNull: false,
       // validate: {
       //   isEmail: true,

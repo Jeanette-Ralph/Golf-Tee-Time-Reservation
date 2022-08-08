@@ -3,14 +3,25 @@ const { Teetimes, User, Players } = require("../../models");
 // need an util-auth if we go old ways with auth
 // const withAuth = require('../../utils/auth');
 
+// go to book rout after auth?
 router.get("/", async (req, res) => {
   try {
     const timeData = await Teetimes.findAll();
     const time = timeData.map((times) => times.get({ plain: true }));
     // this gets us to the page and times?
-    res.render("landingPage", { time });
+    // res.render(
+    //   "landingPage",
+    //   { time }
+    //   // {
+    //   //   User: [
+    //   //     {
+    //   //       role: "Admin",
+    //   //     },
+    //   //   ],
+    //   // }
+    // );
 
-    // res.status(200).json(timeData);
+    res.status(200).json(timeData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -25,6 +36,7 @@ router.get("/", async (req, res) => {
 // 		"message": "Validation isEmail on availability failed",
 router.put("/:id", async (req, res) => {
   try {
+    // undefined value
     const timeData = await Teetimes.update(req.body, {
       where: { availability: req.params.availability },
     });
@@ -45,20 +57,20 @@ router.put("/:id", async (req, res) => {
 // is the user table the "pivot table" for times and players? mayhaps
 
 // delete time
-router.delete("/:id", async (req, res) => {
-  try {
-    const timeData = await Teetimes.update(req.body, {
-      where: { time: req.params.time },
-    });
-    if (!timeData) {
-      res.status(400).json({ message: "can not delete an invalid tee time" });
-      return;
-    }
-    res.status(200).json("success");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     const timeData = await Teetimes.destroy(req.body, {
+//       where: { time: req.params.time },
+//     });
+//     if (!timeData) {
+//       res.status(400).json({ message: "can not delete an invalid tee time" });
+//       return;
+//     }
+//     res.status(200).json("success");
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
 // i need to
