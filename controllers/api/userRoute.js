@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.user_id = userData.id;
-            req.session.logged_in = true;
+            req.session.loggedIn = true;
 
             res.status(200).json(userData);
         });
@@ -75,7 +75,7 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.user_id = userData.id;
-            req.session.logged_in = true;
+            req.session.loggedIn = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });
         });
@@ -96,7 +96,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
         res.render('profile', {
             ...user,
-            logged_in: true
+            loggedIn: true
         });
     } catch (err) {
         res.status(500).json(err);
@@ -106,7 +106,7 @@ router.get('/profile', withAuth, async (req, res) => {
 // redirecting to homepage from logout 
 router.post('/logout', async (req, res) => {
     try {
-        if (req.session.logged_in) {
+        if (req.session.loggedIn) {
             req.session.destroy(() => {
                 res.redirect('/');
             });
