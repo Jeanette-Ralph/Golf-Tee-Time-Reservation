@@ -85,7 +85,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// using withAAuth to only allow users access to the profile page
+// using withAuth to only allow users access to the profile page
 router.get('/profile', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
