@@ -1,113 +1,121 @@
-<div class="tile is-ancestor">
-
-    {{!-- login div --}}
-    <div class="tile is-6">
-        <div class="tile is-child box login-div">
-            <p class="title">Login</p>
-
-            {{!-- username, added an id to the input --}}
-            <div class="field">
-                <label class="label">Username</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Username" id="username-login">
-                </div>
-            </div>
-
-            {{!-- passowrd, added an id to the input --}}
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password" id="password-login">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
-
-            {{!-- login button --}}
-            <div class="field">
-                <p class="control">
-                    <button class="button is-success">
-                        Login
-                    </button>
-                </p>
-            </div>
-
-        </div>
+<section class="hero is-success">
+    <div class="hero-body">
+        <p class="title">
+            Golf Tee Time Reservation
+        </p>
     </div>
+</section>
 
-    {{!-- sign up div --}}
-    <div class="tile is-6">
-        <div class="tile is-child box signup-div">
-            <p class="title">Sign Up</p>
+<div class="container">
+    <div class="tile is-ancestor">
+        {{!-- login div --}}
+        <div class="tile is-parent">
+            <div class="tile is-vertical">
+                <div class="tile is-child box login-div">
+                    <p class="title">Login</p>
 
-            {{!-- first name , added an id to the input--}}
-            <div class="field">
-                <label class="label">First Name</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="First name" id="first-name">
+                    {{!-- username, added an id to the input --}}
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" type="text" placeholder="Username" id="username-login">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    {{!-- passowrd, added an id to the input --}}
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input is-success" type="password" placeholder="Password" id="password-login">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    {{!-- login button --}}
+                    <div class="field">
+                        <p class="control">
+                            <button class="button is-success">
+                                Login
+                            </button>
+                        </p>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            {{!-- last name , added an id to the input--}}
-            <div class="field">
-                <label class="label">Last Name</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Last name" id="last-name">
+
+        <div class="tile is-parent">
+            {{!-- sign up div --}}
+            <div class="tile is-vertical">
+                <div class="tile is-child box signup-div">
+                    <p class="title">Sign Up</p>
+
+                    {{!-- first name , added an id to the input--}}
+                    <div class="field">
+                        <label class="label">First Name</label>
+                        <div class="control">
+                            <input class="input is-success" type="text" placeholder="First name" id="first-name">
+                        </div>
+                    </div>
+
+                    {{!-- last name , added an id to the input--}}
+                    <div class="field">
+                        <label class="label">Last Name</label>
+                        <div class="control">
+                            <input class="input is-success" type="text" placeholder="Last name" id="last-name">
+                        </div>
+                    </div>
+
+                    {{!-- email, added an id to the input --}}
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" type="email" placeholder="Email" id="email">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    {{!-- username, added an id to the input --}}
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" type="text" placeholder="Username" id="username-signup">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    {{!-- paassword, added an id to the input--}}
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input is-success" type="password" placeholder="Password" id="password-signup">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    {{!-- sign up button --}}
+                    <div class="field">
+                        <p class="control">
+                            <button class="button is-success">
+                                Sign Up
+                            </button>
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            {{!-- email, added an id to the input --}}
-            <div class="field">
-                <label class="label">Email</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" placeholder="Email input" value="hello@" id="email">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </span>
-                </div>
-                <p class="help is-danger">This email is invalid</p>
-            </div>
-
-            {{!-- username, added an id to the input --}}
-            <div class="field">
-                <label class="label">Username</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Text input" value="bulma"
-                        id="username-signup">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                    </span>
-                </div>
-                <p class="help is-success">This username is available</p>
-            </div>
-
-            {{!-- paassword, added an id to the input--}}
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password" id="password-signup">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
-
-            {{!-- sign up button --}}
-            <div class="field">
-                <p class="control">
-                    <button class="button is-success">
-                        Sign Up
-                    </button>
-                </p>
-            </div>
-
         </div>
     </div>
 </div>
 
+{{!-- footer partial --}}
+{{>footer}}
 <script src="../public/js/login.js"></script>
