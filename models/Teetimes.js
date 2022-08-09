@@ -19,12 +19,17 @@ Teetimes.init(
     },
     // email?
     availability: {
-      type: DataTypes.TEXT,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       // validate: {
       //   isEmail: true,
       // },
     },
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+
     user_id: {
       type: DataTypes.INTEGER,
       reference: {

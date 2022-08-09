@@ -4,13 +4,13 @@
 {{!-- profile partial need an if admin- if else --}}
 {{>profile}}
 {{!-- booked tee time partial?--}}
-{{!-- {{#if loggedIn}} --}}
+{{!-- {{#if logged_in}} if admin else --}}
 <div class="container is-flex-row">
 {{#each time as |tee_time_start|}}
 {{>managetime}}
 {{/each}}
 </div>
-{{!-- add players --}}
 
 {{!-- footer partial --}}
 {{>footer}}
+
