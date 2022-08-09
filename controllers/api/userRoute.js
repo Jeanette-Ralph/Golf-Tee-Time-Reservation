@@ -6,9 +6,9 @@ const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // getting login and signup page, api/users/login
-// router.get('/login', (req, res) => {
-//     res.render('login');
-// });
+router.get('/login', (req, res) => {
+    res.render('login');
+});
 
 // creating user, api/users/signup
 router.post('/signup', async (req, res) => {
@@ -90,11 +90,12 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
-// redirecting to homepage from logout 
+
 router.post('/logout', async (req, res) => {
     try {
         if (req.session.loggedIn) {
             req.session.destroy(() => {
+                // redirecting to homepage from logout 
                 res.redirect('/');
             });
         }
