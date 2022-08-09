@@ -1,16 +1,27 @@
+<body id="landing">
 {{!-- nav bar header partial--}}
-
+<section class="section">
 {{>header}}
+</section>
 {{!-- profile partial need an if admin- if else --}}
+<section class="section">
 {{>profile}}
+</section>
+    
+
+<section class="section ">
 {{!-- booked tee time partial?--}}
 {{!-- {{#if logged_in}} if admin else --}}
-<div class="container is-flex-row">
+<div class="container">
+<div class="tile is_ancestor">
 {{#each time as |tee_time_start|}}
 {{>managetime}}
 {{/each}}
 </div>
-
+</div>
+</section>
 {{!-- footer partial --}}
+<section class="section">
 {{>footer}}
-
+</section>
+</body>

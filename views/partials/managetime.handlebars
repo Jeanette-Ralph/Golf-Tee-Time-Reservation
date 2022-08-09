@@ -1,23 +1,27 @@
 {{!-- tee times cards with update --}}
 {{#if availability}}
+<div class="tile is-parent is-3 mx-2">
 <div class="columns">
-  <div class="column is-one-fifth">
+  {{!-- <div class="column is-one-fifth"> --}}
 <div class="card time-cards">
-  <div class="card-content">
+  <div class="card-content has-background-primary-light">
     <p class="title has-text-centered is-size-4">
       {{tee_time_start}}
     </p>
     {{!-- need to center text --}}
-    <p class="subtitle">
-      {{price}}
+    <p class="subtitle has-text-centered">
+      ${{price}}
     </p>
   </div>
   <footer class="card-footer">
     <p class="card-footer-item">
       <span>
-        <input class="button book-time" type="submit" value="Book Time" action="send" data-id="{{time.id}}" data-user-id="{{time.user_id}}">
+        <input class="button book-time has-text-light has-background-success" type="submit" value="Book Time" action="send" data-id="{{time.id}}" data-user-id="{{time.user_id}}">
       </span>
     </p>
   </footer>
-</div></div></div>
+</div>
+{{!-- </div> --}}
+</div>
+</div>
 {{/if}}
