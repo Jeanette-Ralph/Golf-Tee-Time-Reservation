@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Teetimes, User, Players } = require("../../models");
+const { Teetimes} = require("../../models");
 // need an util-auth if we go old ways with auth
 // const withAuth = require('../../utils/auth');
 
