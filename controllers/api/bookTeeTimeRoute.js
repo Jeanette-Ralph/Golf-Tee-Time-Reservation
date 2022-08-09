@@ -42,4 +42,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// logged in users booked teetimes
+
 module.exports = router;
