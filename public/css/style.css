@@ -3,7 +3,17 @@
   align-items: center;
 }
 
+
 .time-cards {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 0.5rem;
+}
+
+.time-cards {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.5rem;
+}
+
+.hero-body {
+  background-image: url("../images/golf_course_hero.webp");
 }
