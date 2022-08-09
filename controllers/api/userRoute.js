@@ -10,7 +10,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-// creating user, api/users/signup
+// creating user when they signup, api/users/signup 
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(
@@ -33,7 +33,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// finding user info and verifying it
+// when they login this verifies their password and renders their profile 
 router.post('/login', async (req, res) => {
     try {
 
@@ -56,7 +56,6 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.loggedIn = true;
@@ -64,24 +63,26 @@ router.post('/login', async (req, res) => {
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
-        // redirecting to the profile
-        res.redirect('/profile');
+        // after they log in -> go to landing page, when they get to lp -> then get routed to book time
+        // lp needs 
+        res.render('landingPage');
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// using withAuth to only allow users access to the profile page
-router.get('/profile', withAuth, async (req, res) => {
+// using withAuth to only allow users access to the user profile page, user -> profile page
+router.get('/user', withAuth, async (req, res) => {
     try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-        });
+        const userData = await User.findByPk(req.session.user_id,
+            {
+                attributes: { exclude: ['password'] },
+            });
 
         const user = userData.get({ plain: true });
 
-        res.render('profile', {
+        res.render('landingPage', {
             ...user,
             loggedIn: true
         });
@@ -89,7 +90,6 @@ router.get('/profile', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 router.post('/logout', async (req, res) => {
     try {
