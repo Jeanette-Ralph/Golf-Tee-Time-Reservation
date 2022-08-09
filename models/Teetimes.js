@@ -17,10 +17,16 @@ Teetimes.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    // email?
     availability: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+
     user_id: {
       type: DataTypes.INTEGER,
       reference: {

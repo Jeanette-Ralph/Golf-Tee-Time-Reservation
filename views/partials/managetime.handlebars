@@ -1,37 +1,27 @@
-{{!-- tee times cards with update and cancel --}}
-
-
-{{#each time as |teeTime|}}            
-     <div class="tee-times">
-     {{!-- booked tee times --}}
-            {{!-- little cards for times? can cancel too? --}}
-        <div class="card">
-            <div class="card-content">
-                <p class="title">
-                {{!-- the tee time --}}
-                </p>
-                <p class="subtitle">
-                {{!-- add player names? --}}
-                {{#each players as |playersName|}}
-                {{!-- loop through and get player names --}}
-                <p>{{players.player_name}}</p>
-                {{/each}}
-                </p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                <span>
-                    {{!-- <button class="button">Button</button> --}}
-                    <a href="#">Cancel</a>
-                </span>
-                </p>
-                <p class="card-footer-item">
-                <span>
-                    {{!-- <button class="button">Button</button> --}}
-                    <a href="#">Update tee time Here</a>
-                </span>
-                </p>
-            </footer>
-        </div>
-     </div>
-    {{/each}}
+{{!-- tee times cards with update --}}
+{{#if availability}}
+<div class="tile is-parent is-3 mx-2">
+<div class="columns">
+  {{!-- <div class="column is-one-fifth"> --}}
+<div class="card time-cards">
+  <div class="card-content has-background-primary-light">
+    <p class="title has-text-centered is-size-4">
+      {{tee_time_start}}
+    </p>
+    {{!-- need to center text --}}
+    <p class="subtitle has-text-centered">
+      ${{price}}
+    </p>
+  </div>
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        <input class="button book-time has-text-light has-background-success" type="submit" value="Book Time" action="send" data-id="{{time.id}}" data-user-id="{{time.user_id}}">
+      </span>
+    </p>
+  </footer>
+</div>
+{{!-- </div> --}}
+</div>
+</div>
+{{/if}}
