@@ -1,13 +1,14 @@
 const router = require('express').Router();
+const { json } = require('body-parser');
 const { User } = require('../../models');
 
 // for authenticating the user to view their profile
 const withAuth = require('../../utils/auth');
 
 // getting login and signup page, api/users/login
-router.get('/login', (req, res) => {
-    res.render('login');
-});
+// router.get('/login', (req, res) => {
+//     res.render('login');
+// });
 
 // creating user, api/users/signup
 router.post('/signup', async (req, res) => {
@@ -24,32 +25,18 @@ router.post('/signup', async (req, res) => {
 
         // redirect to the login page
         res.redirect('/login');
-        return userData;
+
+        return res.json(userData);
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// creating a session to save the user info when they login 
+// finding user info and verifying it
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.create(req.body);
 
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.loggedIn = true;
-
-            res.status(200).json(userData);
-        });
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-// finding user info anad verifying it
-router.post('/login', async (req, res) => {
-    try {
         const userData = await User.findOne(
             {
                 where:
@@ -57,9 +44,7 @@ router.post('/login', async (req, res) => {
             });
 
         if (!userData) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect username or password, please try again' });
+            res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
 
@@ -67,11 +52,10 @@ router.post('/login', async (req, res) => {
         const verifyPassword = await userData.checkPassword(req.body.password);
 
         if (!verifyPassword) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect username or password, please try again' });
+            res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
+
 
         req.session.save(() => {
             req.session.user_id = userData.id;
@@ -79,6 +63,9 @@ router.post('/login', async (req, res) => {
 
             res.json({ user: userData, message: 'You are now logged in!' });
         });
+
+        // redirecting to the profile
+        res.redirect('/profile');
 
     } catch (err) {
         res.status(400).json(err);
