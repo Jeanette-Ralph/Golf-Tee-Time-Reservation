@@ -5,6 +5,9 @@ function updateTime(event) {
   // i see var to acquire values possibly user_id->get from session data?, id->get from the card? and availability->get from the card status
   console.log("buutttoonn");
   const id = event.target.getAttribute("data-id");
+  // we are getting the id
+  console.log(id);
+
   const updateInfo = {
     // this is in the get that gets the cards->need? were getting it in the fetch call
     // id: id,
@@ -14,8 +17,8 @@ function updateTime(event) {
     // user_id is not defined-fixed
   };
 
-  // Truncated incorrect DOUBLE value-comparing a number to a string?
-  fetch(`/api/book/:${id}`, {
+  // Truncated incorrect DOUBLE value: ':1'(500) -comparing a number to a string?
+  fetch(`book/:${id}`, {
     // we want to update the information on the time card
     // put is not defined
     method: "PUT",
