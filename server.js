@@ -34,7 +34,7 @@ const sess = {
   }),
 };
 
-// app.use(session(sess));
+app.use(session(sess));
 
 // const hbs = exphbs.create({ helpers });
 // added this to ge the server up and running
