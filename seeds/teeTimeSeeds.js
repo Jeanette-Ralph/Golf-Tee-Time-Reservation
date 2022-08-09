@@ -37,4 +37,6 @@ const teetimes = [
 ];
 
 const seedTeetimesData = () => Teetimes.bulkCreate(teetimes);
+
 module.exports = seedTeetimesData;
+
