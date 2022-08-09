@@ -1,0 +1,27 @@
+{{> header}}
+<section class="hero is-success is-halfheight">
+  <div class="hero-body">
+    <div class="">
+      <p class="title">
+        Half height hero
+      </p>
+      <p class="subtitle">
+        Half height subtitle
+      </p>
+    </div>
+  </div>
+</section>
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Teetime</th>
+      <th>Availability</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  {{#each teetimes as |teetime|}}
+  {{> teetime-details}}
+  {{/each}}
+</table>
+{{> footer}}

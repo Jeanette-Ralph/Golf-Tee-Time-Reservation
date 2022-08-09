@@ -1,7 +1,9 @@
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
-const exphbs = require("express-handlebars");
+const hbs = require("express-handlebars");
+
+
 // Initializes Sequelize with session store
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -38,19 +40,20 @@ const sess = {
 
 app.use(session(sess));
 
-// const hbs = exphbs.create({ helpers });
-// added this to ge the server up and running
-const hbs = exphbs.create();
+app.engine('hbs', hbs.engine({
+  extname: 'hbs',
+  default_layout: 'main',
+  layoutsDir: __dirname + '/views/layouts'
+}));
+app.set('view engine', 'hbs');
 
-app.engine("handlebars", hbs.engine);
-// app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
-app.set("view engine", "handlebars");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(routes);
+
 
 // think I have to link the js button to here to then send the email or perhaps it is in the hbs
 
