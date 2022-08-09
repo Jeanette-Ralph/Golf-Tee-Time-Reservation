@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { json } = require('body-parser');
 const { User } = require('../../models');
 
 // for authenticating the user to view their profile
@@ -9,7 +10,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-// creating user, api/users/signup
+// creating user when they signup, api/users/signup 
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(
@@ -24,32 +25,18 @@ router.post('/signup', async (req, res) => {
 
         // redirect to the login page
         res.redirect('/login');
-        return userData;
+
+        return res.json(userData);
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// creating a session to save the user info when they login 
+// when they login this verifies their password and renders their profile 
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.create(req.body);
 
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-
-            res.status(200).json(userData);
-        });
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-// finding user info anad verifying it
-router.post('/login', async (req, res) => {
-    try {
         const userData = await User.findOne(
             {
                 where:
@@ -57,9 +44,7 @@ router.post('/login', async (req, res) => {
             });
 
         if (!userData) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect username or password, please try again' });
+            res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
 
@@ -67,47 +52,50 @@ router.post('/login', async (req, res) => {
         const verifyPassword = await userData.checkPassword(req.body.password);
 
         if (!verifyPassword) {
-            res
-                .status(400)
-                .json({ message: 'Incorrect username or password, please try again' });
+            res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
 
         req.session.save(() => {
             req.session.user_id = userData.id;
-            req.session.logged_in = true;
+            req.session.loggedIn = true;
 
             res.json({ user: userData, message: 'You are now logged in!' });
         });
+
+        // after they log in -> go to landing page, when they get to lp -> then get routed to book time
+        // lp needs 
+        res.render('landingPage');
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-// using withAuth to only allow users access to the profile page
-router.get('/profile', withAuth, async (req, res) => {
+// using withAuth to only allow users access to the user profile page, user -> profile page
+router.get('/user', withAuth, async (req, res) => {
     try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-        });
+        const userData = await User.findByPk(req.session.user_id,
+            {
+                attributes: { exclude: ['password'] },
+            });
 
         const user = userData.get({ plain: true });
 
-        res.render('profile', {
+        res.render('landingPage', {
             ...user,
-            logged_in: true
+            loggedIn: true
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-// redirecting to homepage from logout 
 router.post('/logout', async (req, res) => {
     try {
-        if (req.session.logged_in) {
+        if (req.session.loggedIn) {
             req.session.destroy(() => {
+                // redirecting to homepage from logout 
                 res.redirect('/');
             });
         }

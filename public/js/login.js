@@ -52,5 +52,4 @@ const userSignup = async (event) => {
 };
 
 const loginDiv = document.querySelector('.login-div').addEventListener('submit', userLogin);
-
 const signUpDiv = document.querySelector('.signup-div').addEventListener('submit', userSignup);
