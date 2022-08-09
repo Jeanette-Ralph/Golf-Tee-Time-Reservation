@@ -23,8 +23,8 @@ router.post('/signup', async (req, res) => {
                 role: req.body.role
             })
 
-        // redirect to the login page
-        res.redirect('/login');
+        // redirect to the homepage page
+        res.redirect('/');
 
         return res.json(userData);
 

@@ -16,7 +16,8 @@ const userLogin = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            // go to their profile
+            document.location.replace('/user');
         } else {
             alert(response.statusText);
         }
@@ -44,7 +45,8 @@ const userSignup = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            // go to their profile
+            document.location.replace('/user');
         } else {
             alert(response.statusText);
         }
