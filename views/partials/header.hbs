@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+{{!-- <nav class="navbar" role="navigation" aria-label="main navigation">
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-brand">
             <a class="navbar-item" href="#">
@@ -30,10 +30,48 @@
                         <a class="button is-light" href="api/user/login">
                             Log in
                         </a>
+                        {{/if}}
                     </div>
                 </div>
             </div>
+        </nav>
     </div>
-    {{/if}}
+</nav> --}}
 
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+            <img src="/images/gns_logo.png">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                {{#if loggedIn}}
+                <div class="buttons">
+                    <a class="navbar-item" href="api/about">
+                        About
+                    </a>
+                    <a class="button is-light" id="logout-btn" href="/">
+                        Log out
+                    </a>
+                    {{else}}
+                    <a class="button is-primary" href="api/user/login">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light" href="api/user/login">
+                        Log in
+                    </a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
 </nav>

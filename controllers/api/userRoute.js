@@ -24,7 +24,7 @@ router.post('/signup', async (req, res) => {
 
         console.log('in the signup post request');
         // redirect to the user profile page
-        res.redirect('/user');
+        res.redirect('/');
 
     } catch (err) {
         res.status(400).json(err);
@@ -61,7 +61,7 @@ router.post('/login', async (req, res) => {
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
-        // cant have two res it will kill the server
+        // cant have two res it will kill the server!!
 
     } catch (err) {
         res.status(400).json(err);

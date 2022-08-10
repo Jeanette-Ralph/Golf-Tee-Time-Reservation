@@ -24,9 +24,9 @@ router.put("/:id", async (req, res) => {
     // undefined value
     const objUp = {
       ...req.body,
-      // user_id: req.session.user_id,
+      user_id: req.session.user_id,
       // hard code user id
-      user_id: 4,
+      // user_id: 4,
     };
     console.log(objUp);
 
