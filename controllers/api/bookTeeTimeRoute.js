@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Teetimes } = require("../../models");
+const withAuth = require("../../utils/auth");
 // need an util-auth if we go old ways with auth
 // const withAuth = require('../../utils/auth');
 
@@ -36,6 +37,9 @@ router.put("/:id", async (req, res) => {
       user_id: 2,
     };
     console.log(objUp);
+    /*at async C:\Users\mvpce\JP UCLA Bootcamp\Project-2\controllers\api\bookTeeTimeRoute.js:39:22 {
+      name: 'SequelizeDatabaseError',
+      parent: Error: Truncated incorrect DOUBLE value: ':1'*/
     const timeData = await Teetimes.update(objUp, {
       where: { id: req.params.id },
     });

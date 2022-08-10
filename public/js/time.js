@@ -17,7 +17,14 @@ function updateTime(event) {
     // user_id is not defined-fixed
   };
 
-  // Truncated incorrect DOUBLE value: ':1'(500) -comparing a number to a string?
+  /*     code: 'ER_TRUNCATED_WRONG_VALUE',
+    errno: 1292,
+    sqlState: '22007',
+    sqlMessage: "Truncated incorrect DOUBLE value: ':1'",
+    sql: 'UPDATE `teetimes` SET `user_id`=?,`updated_at`=? WHERE `id` = ?',
+    parameters: [ 2, '2022-08-09 22:52:33', ':1' ]*/
+  // PUT http://localhost:3001/api/book/:1 500 (Internal Server Error)
+
   fetch(`book/:${id}`, {
     // we want to update the information on the time card
     // put is not defined
