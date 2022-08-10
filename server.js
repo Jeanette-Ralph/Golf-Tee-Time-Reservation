@@ -2,15 +2,11 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const hbs = require("express-handlebars");
-
 // Initializes Sequelize with session store
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
-
 const nodemailer = require("nodemailer");
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -62,7 +58,7 @@ app.use(routes);
 <li>Company: ${req.body.tee_tim}</li>
 <li>Email: ${req.body.email}</li> */
 }
-app.post("/send", (req, res) => {
+app.post("/post", (req, res) => {
   const output = `
 <p>You have booked you tee time!</p>
 <h3>Golf N' Stuff Links</h3>
