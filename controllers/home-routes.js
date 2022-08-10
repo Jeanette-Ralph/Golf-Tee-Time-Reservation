@@ -22,23 +22,11 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/user', async (req, res) => {
-  res.render('landingPage');
-  try {
-    const userData = await User.findByPk(req.session.user_id,
-      {
-        attributes: { exclude: ['password'] },
-      });
-
-    const user = userData.get({ plain: true });
-
-    res.render('landingPage', {
-      ...user,
-      // append this property loggedIn
-      loggedIn: true
+  res.render('landingPage',
+    {
+      userData
     });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+
 });
 
 module.exports = router;

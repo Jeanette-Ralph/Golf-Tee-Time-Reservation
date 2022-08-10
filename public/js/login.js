@@ -8,7 +8,10 @@ const userLogin = async (event) => {
         const response = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify(
-                { username, password }
+                {
+                    user_name: username,
+                    password: password
+                }
             ),
             headers: {
                 'Content-Type': 'application/json'
