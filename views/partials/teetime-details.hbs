@@ -6,4 +6,7 @@
        Booked
 {{/if}}</td>
     <td>${{price}}</td>
+{{!-- {{#if loggedIn}} --}}
+ <td><input class="button book-time has-text-light has-background-success button is-small" type="submit" value="Book Time" action="send" method="POST" data-id="{{id}}" data-user-id="{{user_id}}"></td>
+{{!-- {{/if}}     --}}
 </tr>

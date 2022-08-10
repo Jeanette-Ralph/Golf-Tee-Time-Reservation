@@ -1,47 +1,9 @@
 {{!-- profile for people want to show name, update profile and pass in role for display purpose--}}
-
-<div class="container">
-  <div class="profile is-primary">
-    This container is <strong>centered</strong> on desktop and larger viewports.
-    {{!-- needs to get the user id--}}
-    <div class="name">
-      {{!-- display name --}}
-      <h1>
-        <a href="/models/user{{user.id}}">{{user.name}}</a>
-      </h1>
-    </div>
-
-    {{!-- status ? --}}
-  </div>
-  {{!-- players to play with --}}
-  <div class="box">
-    <article class="media">
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <strong>{{players.player_name}}</strong>
-            <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas.
-            Nullam condimentum luctus turpis.
-            <a href="{{players.email}}">{{players.email}}</a>
-          </p>
-        </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item" aria-label="like">
-              <span class="icon is-small">
-                <i class="fas fa-heart" aria-hidden="true"></i>
-              </span>
-            </a>
-            <a class="level-item" aria-label="ban">
-              <span class="icon is-small">
-                <i class="fas fa-ban" aria-hidden="true"></i>
-              </span>
-            </a>
-          </div>
-        </nav>
-      </div>
-    </article>
-
-  </div>
+<div class="animate__animated animate__bounce">
+<div class="box">
+Hello,
+{{first_name}}{{last_name}}
+<br>
+Username:{{username}}
+</div>
 </div>

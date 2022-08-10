@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { Teetimes} = require("../../models");
+const { Teetimes } = require("../../models");
+const withAuth = require("../../utils/auth");
 // need an util-auth if we go old ways with auth
 // const withAuth = require('../../utils/auth');
 
@@ -9,7 +10,16 @@ router.get("/", async (req, res) => {
     const timeData = await Teetimes.findAll();
     const time = timeData.map((times) => times.get({ plain: true }));
     // this gets us to the page and times?
+
     res.render("landingPage", { time });
+
+    // "id": 1,
+    // "tee_time_start": "2022-08-06T13:00:00.000Z",
+    // "availability": true,
+    // "price": "45.00",
+    // "user_id": 3,
+    // "createdAt": "2022-08-09T21:14:31.000Z",
+    // "updatedAt": "2022-08-09T21:14:31.000Z"
 
     // res.status(200).json(timeData);
   } catch (err) {
@@ -27,6 +37,9 @@ router.put("/:id", async (req, res) => {
       user_id: 2,
     };
     console.log(objUp);
+    /*at async C:\Users\mvpce\JP UCLA Bootcamp\Project-2\controllers\api\bookTeeTimeRoute.js:39:22 {
+      name: 'SequelizeDatabaseError',
+      parent: Error: Truncated incorrect DOUBLE value: ':1'*/
     const timeData = await Teetimes.update(objUp, {
       where: { id: req.params.id },
     });
@@ -41,5 +54,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// logged in users booked teetimes
 
 module.exports = router;

@@ -1,4 +1,4 @@
-<body id="landing">
+
 {{!-- nav bar header partial--}}
 <section class="section">
 {{>header}}
@@ -9,19 +9,20 @@
 </section>
     
 
-<section class="section ">
-{{!-- booked tee time partial?--}}
-{{!-- {{#if logged_in}} if admin else --}}
-<div class="container">
-<div class="tile is_ancestor">
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Teetime</th>
+      <th>Availability</th>
+      <th>Price</th>
+    </tr>
+  </thead>
 {{#each time as |tee_time_start|}}
-{{>managetime}}
-{{/each}}
-</div>
-</div>
-</section>
-{{!-- footer partial --}}
+  {{!-- {{#each teetimes as |teetime|}} --}}
+  {{> teetime-details}}
+  {{/each}}
+</table>
+
 <section class="section">
 {{>footer}}
 </section>
-</body>
