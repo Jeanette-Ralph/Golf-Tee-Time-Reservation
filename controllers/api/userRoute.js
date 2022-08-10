@@ -5,7 +5,6 @@ const { User } = require('../../models');
 // for authenticating the user to view their profile
 const withAuth = require('../../utils/auth');
 
-
 // getting login and signup page, api/users/login
 router.get('/login', (req, res) => {
     res.render('login');
@@ -62,7 +61,7 @@ router.post('/login', async (req, res) => {
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
-        // cant have two res it will kill the server
+        // cant have two res it will kill the server!!
 
     } catch (err) {
         res.status(400).json(err);
