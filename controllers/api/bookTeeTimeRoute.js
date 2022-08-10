@@ -29,6 +29,8 @@ router.get("/", async (req, res) => {
 // updates cards with indqviual times with a user id to associate with
 router.put("/:id", async (req, res) => {
   try {
+    console.log("about to req.body");
+    console.log(req.body);
     // undefined value
     const objUp = {
       ...req.body,
@@ -37,9 +39,7 @@ router.put("/:id", async (req, res) => {
       user_id: 2,
     };
     console.log(objUp);
-    /*at async C:\Users\mvpce\JP UCLA Bootcamp\Project-2\controllers\api\bookTeeTimeRoute.js:39:22 {
-      name: 'SequelizeDatabaseError',
-      parent: Error: Truncated incorrect DOUBLE value: ':1'*/
+
     const timeData = await Teetimes.update(objUp, {
       where: { id: req.params.id },
     });

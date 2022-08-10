@@ -1,12 +1,20 @@
-// const { put } = require("../../controllers/api/bookTeeTimeRoute");
+const btn = document.querySelectorAll(".book-time");
+
+btn.forEach((btn) => {
+  // btn.addEventListener("click", function () {
+  //   let buttonId = btn.getAttribute("data-id");
+  //   updateTime(buttonId);
+  // });
+  btn.addEventListener("click", updateTime);
+});
 
 function updateTime(event) {
-  event.preventDefault();
+  // event.preventDefault();
   // i see var to acquire values possibly user_id->get from session data?, id->get from the card? and availability->get from the card status
   console.log("buutttoonn");
   const id = event.target.getAttribute("data-id");
   // we are getting the id
-  console.log(id);
+  console.log(event);
 
   const updateInfo = {
     // this is in the get that gets the cards->need? were getting it in the fetch call
@@ -16,20 +24,16 @@ function updateTime(event) {
     // session data?-yes
     // user_id is not defined-fixed
   };
+  console.log(updateInfo);
 
-  /*     code: 'ER_TRUNCATED_WRONG_VALUE',
-    errno: 1292,
-    sqlState: '22007',
-    sqlMessage: "Truncated incorrect DOUBLE value: ':1'",
-    sql: 'UPDATE `teetimes` SET `user_id`=?,`updated_at`=? WHERE `id` = ?',
-    parameters: [ 2, '2022-08-09 22:52:33', ':1' ]*/
-  // PUT http://localhost:3001/api/book/:1 500 (Internal Server Error)
-
-  fetch(`book/:${id}`, {
+  fetch(`book/${id}`, {
     // we want to update the information on the time card
     // put is not defined
     method: "PUT",
-    body: updateInfo,
+    body: JSON.stringify(updateInfo),
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => {
       if (200) {
@@ -41,5 +45,6 @@ function updateTime(event) {
     .then((data) => console.log(data))
     .catch((err) => console.log("Error message:"));
 }
-
-// document.querySelector(".book-time").addEventListener("click", updateTime);
+// function whichButton(test) {
+//   console.log(test);
+// }
