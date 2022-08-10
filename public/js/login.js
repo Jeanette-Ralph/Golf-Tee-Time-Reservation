@@ -27,6 +27,7 @@ const userLogin = async (event) => {
 const userSignup = async (event) => {
     event.preventDefault();
 
+    console.log('in user signup');
     const firstName = document.querySelector('#first-name').value.trim();
     const lastName = document.querySelector('#last-name').value.trim();
     const email = document.querySelector('#email').value.trim();
@@ -34,11 +35,15 @@ const userSignup = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
 
     if (firstName && lastName && email && username && password) {
-        const response = await fetch('/api/users/signup', {
+        const response = await fetch('/api/user/signup', {
             method: 'POST',
-            body: JSON.stringify(
-                { firstName, lastName, email, username, password }
-            ),
+            body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                user_name: username,
+                email: email,
+                password: password
+            }),
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -47,6 +52,7 @@ const userSignup = async (event) => {
         if (response.ok) {
             // go to their profile
             document.location.replace('/user');
+            console.log('response ok');
         } else {
             alert(response.statusText);
         }
@@ -54,4 +60,4 @@ const userSignup = async (event) => {
 };
 
 const loginDiv = document.querySelector('.login-div').addEventListener('submit', userLogin);
-const signUpDiv = document.querySelector('.signup-div').addEventListener('submit', userSignup);
+const signUpDiv = document.querySelector('#signup-button').addEventListener('click', userSignup);

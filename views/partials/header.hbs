@@ -12,16 +12,35 @@
                 <span aria-hidden="true"></span>
             </a>
         </div>
-        <div class="navbar-end">
-            <a class="navbar-item" href="/about">
-                About
-            </a>
-            {{!-- for home link --}}
-            <div class="buttons">
-                <a class="button is-light" id="logout-btn" href="/">
-                    Log out
-                </a>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="navbar-item" href="api/about">
+                            About
+                        </a>
+                        {{#if loggedIn}}
+                        <div class="buttons">
+                            <a class="button is-light" id="logout-btn" href="/">
+                                Log out
+                            </a>
+                        </div>
+                        {{else}}
+                        <div class="navbar-end">
+                            <div class="navbar-item">
+                                <div class="buttons">
+                                    <a class="button is-primary" href="api/user/login">
+                                        <strong>Sign up</strong>
+                                    </a>
+                                    <a class="button is-light" href="api/user/login">
+                                        Log in
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
             </div>
-        </div>
     </div>
 </nav>
