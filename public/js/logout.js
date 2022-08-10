@@ -7,6 +7,7 @@ const userLogout = async () => {
     });
 
     if (response.ok) {
+        // go to homepage after logging out
         document.location.replace('/');
     } else {
         alert(response.statusText);
