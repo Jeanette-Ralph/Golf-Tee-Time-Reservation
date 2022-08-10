@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Teetimes } = require("../../models");
 const withAuth = require("../../utils/auth");
+const nodemailer = require("nodemailer");
 // need an util-auth if we go old ways with auth
 // const withAuth = require('../../utils/auth');
 
@@ -9,24 +10,13 @@ router.get("/", async (req, res) => {
   try {
     const timeData = await Teetimes.findAll();
     const time = timeData.map((times) => times.get({ plain: true }));
-    // this gets us to the page and times?
-
     res.render("landingPage", { time });
-
-    // "id": 1,
-    // "tee_time_start": "2022-08-06T13:00:00.000Z",
-    // "availability": true,
-    // "price": "45.00",
-    // "user_id": 3,
-    // "createdAt": "2022-08-09T21:14:31.000Z",
-    // "updatedAt": "2022-08-09T21:14:31.000Z"
-
     // res.status(200).json(timeData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-// updates cards with indqviual times with a user id to associate with
+// updates cards with individual times with a user id to associate with
 router.put("/:id", async (req, res) => {
   try {
     console.log("about to req.body");
@@ -36,7 +26,7 @@ router.put("/:id", async (req, res) => {
       ...req.body,
       // user_id: req.session.user_id,
       // hard code user id
-      user_id: 2,
+      user_id: 4,
     };
     console.log(objUp);
 
@@ -56,5 +46,55 @@ router.put("/:id", async (req, res) => {
 });
 
 // logged in users booked teetimes
+// post works in insomnia-now to link to the button
+router.post("/send", async (req, res) => {
+  const output = `
+<p>You have booked you tee time!</p>
+<h3>Golf N' Stuff Links</h3>
+<ul>  
+    </ul>
+    <h3>Message</h3>
+    <p>Congrats on booking your tee time. Please arrive 15 min before your time.
+    The parking lot is located at 
+    742 Evergreen Terrace
+    Springfield</p>
+    <img src=/public/images/Lee_Carvallo_s_Putting_Challenge.jpg/>
+
+  `;
+  // this is copy pasta from nodemailer
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: process.env.HOST, //'mail.YOURDOMAIN.com',
+    port: process.env.PORTEMAIL,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: process.env.USER,
+      pass: process.env.PASSWORD,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  let mailOptions = {
+    from: '"Golf N Stuff Links" <mvpcents@gmail.com>', // sender address
+    to: "jamesplasencia@gmail.com", // list of receivers
+    // to: `${req.body.email}`, // list of receivers
+    subject: "Congratulations on the tee time", // Subject line
+    text: "Ready to play?", // plain text body
+    html: output, // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+    res.render("contact", { msg: "Email has been sent" });
+  });
+});
 
 module.exports = router;
