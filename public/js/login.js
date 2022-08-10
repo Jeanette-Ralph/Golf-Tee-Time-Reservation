@@ -1,11 +1,12 @@
 const userLogin = async (event) => {
     event.preventDefault();
-
+    console.log('in user login')
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
     if (username && password) {
-        const response = await fetch('/api/users/login', {
+        console.log('in the if block');
+        const response = await fetch('/api/user/login', {
             method: 'POST',
             body: JSON.stringify(
                 {
@@ -18,8 +19,11 @@ const userLogin = async (event) => {
             },
         });
 
+        console.log('past fetch request code block');
+
         if (response.ok) {
             // go to their profile
+            console.log('response ok')
             document.location.replace('/user');
         } else {
             alert(response.statusText);
@@ -40,13 +44,15 @@ const userSignup = async (event) => {
     if (firstName && lastName && email && username && password) {
         const response = await fetch('/api/user/signup', {
             method: 'POST',
-            body: JSON.stringify({
-                first_name: firstName,
-                last_name: lastName,
-                user_name: username,
-                email: email,
-                password: password
-            }),
+            body: JSON.stringify(
+                {
+                    first_name: firstName,
+                    last_name: lastName,
+                    user_name: username,
+                    email: email,
+                    password: password
+                }
+            ),
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -62,5 +68,5 @@ const userSignup = async (event) => {
     }
 };
 
-const loginDiv = document.querySelector('.login-div').addEventListener('submit', userLogin);
-const signUpDiv = document.querySelector('#signup-button').addEventListener('click', userSignup);
+const loginButton = document.querySelector('#login-button').addEventListener('click', userLogin);
+const signUpButton = document.querySelector('#signup-button').addEventListener('click', userSignup);

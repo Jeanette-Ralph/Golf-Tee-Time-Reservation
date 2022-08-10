@@ -22,11 +22,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/user', async (req, res) => {
-  res.render('landingPage',
-    {
-      userData
-    });
-
+  res.render('landingPage',);
 });
 
 module.exports = router;
