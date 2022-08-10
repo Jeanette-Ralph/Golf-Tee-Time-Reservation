@@ -39,6 +39,7 @@ const sess = {
 
 app.use(session(sess));
 
+app.set("view engine", "hbs");
 app.engine(
   "hbs",
   hbs.engine({

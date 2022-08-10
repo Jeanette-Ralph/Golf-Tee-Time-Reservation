@@ -34,12 +34,12 @@ User.init(
     },
     role: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: "Player",
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true,
       validate: {
         isEmail: true,
       },

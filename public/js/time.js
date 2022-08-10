@@ -42,4 +42,4 @@ function updateTime(event) {
     .catch((err) => console.log("Error message:"));
 }
 
-document.querySelector(".book-time").addEventListener("click", updateTime);
+// document.querySelector(".book-time").addEventListener("click", updateTime);
