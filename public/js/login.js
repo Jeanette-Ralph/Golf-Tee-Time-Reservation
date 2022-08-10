@@ -55,7 +55,7 @@ const userSignup = async (event) => {
 
         if (response.ok) {
             // go to their profile
-            document.location.replace('/user');
+            document.location.replace('/');
             console.log('response ok');
         } else {
             alert(response.statusText);

@@ -1,6 +1,7 @@
 // to fix an error
 const router = require("express").Router();
 const { Teetimes, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 // Render the homepage because we are not logged in yet.
 // Render all of the tetimes
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/user', async (req, res) => {
+router.get('/user', withAuth, async (req, res) => {
   res.render('landingPage',);
 });
 

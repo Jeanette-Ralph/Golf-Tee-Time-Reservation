@@ -5,6 +5,7 @@ const { User } = require('../../models');
 // for authenticating the user to view their profile
 const withAuth = require('../../utils/auth');
 
+
 // getting login and signup page, api/users/login
 router.get('/login', (req, res) => {
     res.render('login');
@@ -24,7 +25,7 @@ router.post('/signup', async (req, res) => {
 
         console.log('in the signup post request');
         // redirect to the user profile page
-        res.redirect('/user');
+        res.redirect('/');
 
     } catch (err) {
         res.status(400).json(err);
