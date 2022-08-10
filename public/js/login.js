@@ -1,6 +1,5 @@
 const userLogin = async (event) => {
     event.preventDefault();
-    console.log('in user login')
     const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
@@ -19,11 +18,7 @@ const userLogin = async (event) => {
             },
         });
 
-        console.log('past fetch request code block');
-
         if (response.ok) {
-            // go to their profile
-            console.log('response ok')
             document.location.replace('/user');
         } else {
             alert(response.statusText);

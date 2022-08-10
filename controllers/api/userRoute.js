@@ -31,7 +31,6 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-
 // when they login this verifies their password and renders their profile 
 router.post('/login', async (req, res) => {
     console.log('in login post route');
@@ -55,9 +54,6 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
-
-        console.log('past verify pssword')
-
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.loggedIn = true;
@@ -65,13 +61,8 @@ router.post('/login', async (req, res) => {
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
-        console.log('past req.session code block');
+        // cant have two res it will kill the server
 
-        // after they log in -> go to landing page, when they get to lp -> then get routed to book time
-        // lp needs 
-        // res.redirect('/user');
-
-        console.log('past redirect /user')
     } catch (err) {
         res.status(400).json(err);
     }
