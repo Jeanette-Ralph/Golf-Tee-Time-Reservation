@@ -15,8 +15,12 @@ router.get("/", withAuth, async (req, res) => {
       loggedIn: req.session.loggedIn,
       user_id: req.session.user_id,
     });
-    console.log('---------------------------------------------------');
+    console.log('---------------------logged in------------------------------');
     console.log(req.session.loggedIn);
+    console.log('---------------------user id------------------------------');
+    console.log(req.session.user_id);
+    console.log('----------------------session-----------------------------');
+    console.log(req.session);
     // res.status(200).json(timeData);
   } catch (err) {
     res.status(500).json(err);

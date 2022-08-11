@@ -31,8 +31,7 @@ router.post('/signup', async (req, res) => {
         });
 
         console.log('in the signup post request');
-        // redirect to the user profile page
-        // res.redirect('/');
+
 
     } catch (err) {
         res.status(400).json(err);
