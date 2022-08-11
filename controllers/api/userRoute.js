@@ -20,18 +20,24 @@ router.post('/signup', async (req, res) => {
                 user_name: req.body.user_name,
                 email: req.body.email,
                 password: req.body.password,
-                role: req.body.role
             })
 
-        // redirect to the login page
-        res.redirect('/login');
+        // adding in req.session save
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
 
-        return res.json(userData);
+            res.status(200).json(userData);
+        });
+
+        console.log('in the signup post request');
+
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
+
 
 // when they login this verifies their password and renders their profile 
 router.post('/login', async (req, res) => {
@@ -59,13 +65,10 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.loggedIn = true;
-
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
-        // after they log in -> go to landing page, when they get to lp -> then get routed to book time
-        // lp needs 
-        res.render('landingPage');
+        // cant have two res it will kill the server!!
 
     } catch (err) {
         res.status(400).json(err);
@@ -84,6 +87,7 @@ router.get('/user', withAuth, async (req, res) => {
 
         res.render('landingPage', {
             ...user,
+            // append this property loggedIn
             loggedIn: true
         });
     } catch (err) {
@@ -96,6 +100,7 @@ router.post('/logout', async (req, res) => {
         if (req.session.loggedIn) {
             req.session.destroy(() => {
                 // redirecting to homepage from logout 
+                console.log(loggedIn);
                 res.redirect('/');
             });
         }

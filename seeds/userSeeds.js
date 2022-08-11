@@ -7,7 +7,7 @@ const userData = [
         user_name: 'mvpcents',
         role: 'Player',
         email: 'jamesplasencia@gmail.com',
-        password: 'bootcamp2022!'
+        password: '$2b$10$7S/N7Eiwrzz5ilVD/cDEGO6RjhwPI13DAlBZhhHtEGqy/ztANcpYe'
     },
 
     {
@@ -16,7 +16,7 @@ const userData = [
         user_name: 'jeanster',
         role: 'Player',
         email: 'jean.ralph@hotmail.com',
-        password: 'Bootcamp2022!!'
+        password: '$2b$10$7S/N7Eiwrzz5ilVD/cDEGO6RjhwPI13DAlBZhhHtEGqy/ztANcpYe'
     },
 
     {
@@ -25,7 +25,7 @@ const userData = [
         user_name: 'oddvidaroad',
         role: 'Player',
         email: 'oddvidaroad@gmail.com',
-        password: 'B00tcamp2022!!'
+        password: '$2b$10$7S/N7Eiwrzz5ilVD/cDEGO6RjhwPI13DAlBZhhHtEGqy/ztANcpYe'
     },
 
     {
@@ -34,7 +34,7 @@ const userData = [
         user_name: 'james_ralph',
         role: 'Admin',
         email: 'jamesralph71@gmail.com',
-        password: 'adminBootcamp2022!'
+        password: '$2b$10$7S/N7Eiwrzz5ilVD/cDEGO6RjhwPI13DAlBZhhHtEGqy/ztANcpYe'
     },
 
     {
@@ -43,7 +43,7 @@ const userData = [
         user_name: 'frank_ralph',
         role: 'Admin',
         email: 'frankralph@live.com',
-        password: 'adminBootcamp2022!'
+        password: '$2b$10$7S/N7Eiwrzz5ilVD/cDEGO6RjhwPI13DAlBZhhHtEGqy/ztANcpYe'
     },
 
 ]

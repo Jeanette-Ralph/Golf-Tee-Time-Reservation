@@ -5,9 +5,6 @@ const sequelize = require("../config/connection");
 
 class User extends Model {
   checkPassword(password) {
-    console.log('hitting passwword check');
-    console.log('password', password);
-    console.log('this.password', this.password);
     return bcrypt.compareSync(password, this.password);
   }
 }
@@ -34,12 +31,12 @@ User.init(
     },
     role: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: "Player",
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true,
       validate: {
         isEmail: true,
       },

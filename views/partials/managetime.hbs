@@ -1,6 +1,9 @@
 {{!-- tee times cards with update --}}
+{{!-- "wrapper animated bounceInLeft" --}}
+
 {{#if availability}}
-<div class="tile is-parent is-3 mx-2">
+    <div class="wrapper animated bounceInLeft">
+<div class="tile is-parent is-4 mx-1">
 <div class="columns">
   {{!-- <div class="column is-one-fifth"> --}}
 <div class="card time-cards">
@@ -16,12 +19,12 @@
   <footer class="card-footer">
     <p class="card-footer-item">
       <span>
-        <input class="button book-time has-text-light has-background-success" type="submit" value="Book Time" action="send" data-id="{{time.id}}" data-user-id="{{time.user_id}}">
+        <input class="button book-time has-text-light has-background-success" type="submit" value="Book Time" action="send" method="POST" data-id="{{id}}" data-user-id="{{user_id}}">
       </span>
     </p>
   </footer>
 </div>
 {{!-- </div> --}}
 </div>
-</div>
+</div></div>
 {{/if}}
