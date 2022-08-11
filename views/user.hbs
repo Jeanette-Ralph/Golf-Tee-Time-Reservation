@@ -1,16 +1,11 @@
-{{!-- {{#if loggedIn}} --}}
-{{!-- nav bar header partial--}}
 <section class="section">
   {{>header}}
 </section>
-
-{{!-- profile partial need an if admin- if else --}}
 <section class="section">
   {{>profile}}
 </section>
-    
+   
 <div class="animate__animated animate__bounce">
-
 <table class="table is-fullwidth">
   <thead>
     <tr>
@@ -19,19 +14,11 @@
       <th>Price</th>
     </tr>
   </thead>
-
-
-
-{{!-- needs a user type conditional --}}
   {{#each time as |tee_time_start|}}
   {{> teetime-details}}
   {{/each}}
-  
-
-
 </table>
 </div>
-
 <section class="section">
   {{>footer}}
 </section>

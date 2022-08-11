@@ -36,6 +36,9 @@ const sess = {
 
 app.use(session(sess));
 
+// handlebar helper
+const formatDate = require("./helpers/hbs");
+
 app.set("view engine", "hbs");
 app.engine(
   "hbs",
@@ -43,6 +46,7 @@ app.engine(
     extname: "hbs",
     default_layout: "main",
     layoutsDir: __dirname + "/views/layouts",
+    helpers: formatDate,
   })
 );
 app.set("view engine", "hbs");

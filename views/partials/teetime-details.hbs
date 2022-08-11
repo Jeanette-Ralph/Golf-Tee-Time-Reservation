@@ -1,5 +1,5 @@
 <tr>
-    <th>{{tee_time_start}}</th>
+    <th>{{formatDate tee_time_start 'MMMM Do YYYY, h:mm:ss a'}}</th>
     <td>{{#if availability}}
         Available
         {{else}}
@@ -8,5 +8,5 @@
     <td>${{price}}</td>
 
     <td><input class="button book-time email-time has-text-light has-background-success button is-small" type="submit"
-            value="Book Time" action="send" method="POST" data-id="{{id}}" data-user-id="{{user_id}}"></td>
+            value="Book Time" action="send" method="POST" data-id="{{id}}" data-user-id="{{user_id}}" data-email={{email}}></td>
 </tr>
