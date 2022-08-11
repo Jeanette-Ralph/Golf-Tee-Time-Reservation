@@ -1,5 +1,5 @@
 const btn = document.querySelectorAll(".book-time");
-
+const getEmail = document.querySelector("#user-email");
 btn.forEach((btn) => {
   // btn.addEventListener("click", function () {
   //   let buttonId = btn.getAttribute("data-id");
@@ -19,9 +19,6 @@ function updateTime(event) {
     availability: false,
   };
   console.log(updateInfo);
-  // const emailInfor={
-
-  // }
 
   let timeUp = fetch(`book/${id}`, {
     method: "PUT",
@@ -32,7 +29,14 @@ function updateTime(event) {
   });
   let email = fetch(`book/send`, {
     method: "POST",
+    // body: JSON.stringify({
+    //   user_email: getEmail
+    // }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
+
   Promise.all([timeUp, email])
     .then((res) => {
       if (200) {

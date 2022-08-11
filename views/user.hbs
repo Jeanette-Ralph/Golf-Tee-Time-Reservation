@@ -3,11 +3,13 @@
 <section class="section">
   {{>header}}
 </section>
+
 {{!-- profile partial need an if admin- if else --}}
 <section class="section">
   {{>profile}}
 </section>
-<h1>{{user_id}}</h1>
+    
+<div class="animate__animated animate__bounce">
 
 <table class="table is-fullwidth">
   <thead>
@@ -17,15 +19,19 @@
       <th>Price</th>
     </tr>
   </thead>
+
+
+
+{{!-- needs a user type conditional --}}
   {{#each time as |tee_time_start|}}
-  {{!-- {{#each teetimes as |teetime|}} --}}
   {{> teetime-details}}
   {{/each}}
+  
+
+
 </table>
+</div>
 
 <section class="section">
   {{>footer}}
 </section>
-{{!-- {{else}} --}}
-{{!-- <a href="/api/login"></a> --}}
-{{!-- {{/if}} --}}
