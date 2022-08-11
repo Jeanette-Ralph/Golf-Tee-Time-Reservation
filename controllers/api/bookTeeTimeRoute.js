@@ -6,16 +6,19 @@ const nodemailer = require("nodemailer");
 // const withAuth = require('../../utils/auth');
 
 // go to book rout after auth?
-router.get("/", async (req, res) => {
-  try {
-    const timeData = await Teetimes.findAll();
-    const time = timeData.map((times) => times.get({ plain: true }));
-    res.render("landingPage", { time });
-    // res.status(200).json(timeData);
-  } catch (err) {
-    res.status(500).json(err);
+router.get(
+  "/",
+  /*withAuth,*/ async (req, res) => {
+    try {
+      const timeData = await Teetimes.findAll();
+      const time = timeData.map((times) => times.get({ plain: true }));
+      res.render("landingPage", { time });
+      // res.status(200).json(timeData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
-});
+);
 // updates cards with individual times with a user id to associate with
 router.put("/:id", async (req, res) => {
   try {

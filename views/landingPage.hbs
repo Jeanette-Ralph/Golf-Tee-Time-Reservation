@@ -8,7 +8,7 @@
 {{>profile}}
 </section>
     
-
+<div class="animate__animated animate__bounce">
 <table class="table is-fullwidth">
   <thead>
     <tr>
@@ -17,12 +17,14 @@
       <th>Price</th>
     </tr>
   </thead>
+  {{!-- {{#if loggedIn}} --}}
 {{#each time as |tee_time_start|}}
   {{!-- {{#each teetimes as |teetime|}} --}}
   {{> teetime-details}}
   {{/each}}
+  {{!-- {{/if}} --}}
 </table>
-
+</div>
 <section class="section">
 {{>footer}}
 </section>

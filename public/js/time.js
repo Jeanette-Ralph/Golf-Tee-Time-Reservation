@@ -19,9 +19,6 @@ function updateTime(event) {
     availability: false,
   };
   console.log(updateInfo);
-  // const emailInfor={
-
-  // }
 
   let timeUp = fetch(`book/${id}`, {
     method: "PUT",
@@ -32,6 +29,9 @@ function updateTime(event) {
   });
   let email = fetch(`book/send`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   Promise.all([timeUp, email])
     .then((res) => {
