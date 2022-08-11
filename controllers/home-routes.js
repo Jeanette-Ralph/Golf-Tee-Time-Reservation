@@ -23,7 +23,10 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/user', withAuth, async (req, res) => {
-  res.render('landingPage',);
+  res.render('user', {
+    user_id: req.session.user_id,
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 module.exports = router;

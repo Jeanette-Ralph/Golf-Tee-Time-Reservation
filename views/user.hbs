@@ -1,14 +1,16 @@
-
+{{!-- {{#if loggedIn}} --}}
 {{!-- nav bar header partial--}}
 <section class="section">
-{{>header}}
+  {{>header}}
 </section>
 {{!-- profile partial need an if admin- if else --}}
 <section class="section">
-{{>profile}}
+  {{>profile}}
 </section>
     
 <div class="animate__animated animate__bounce">
+<h1>{{user_id}}</h1>
+
 <table class="table is-fullwidth">
   <thead>
     <tr>
@@ -19,6 +21,7 @@
   </thead>
   {{!-- {{#if loggedIn}} --}}
 {{#each time as |tee_time_start|}}
+  {{#each time as |tee_time_start|}}
   {{!-- {{#each teetimes as |teetime|}} --}}
   {{> teetime-details}}
   {{/each}}
@@ -26,5 +29,8 @@
 </table>
 </div>
 <section class="section">
-{{>footer}}
+  {{>footer}}
 </section>
+{{!-- {{else}} --}}
+{{!-- <a href="/api/login"></a> --}}
+{{!-- {{/if}} --}}
