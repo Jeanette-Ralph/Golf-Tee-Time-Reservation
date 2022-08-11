@@ -6,11 +6,17 @@ const nodemailer = require("nodemailer");
 // const withAuth = require('../../utils/auth');
 
 // go to book rout after auth?
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const timeData = await Teetimes.findAll();
     const time = timeData.map((times) => times.get({ plain: true }));
-    res.render("landingPage", { time });
+    res.render("user", {
+      time,
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id,
+    });
+    console.log('---------------------------------------------------');
+    console.log(req.session.loggedIn);
     // res.status(200).json(timeData);
   } catch (err) {
     res.status(500).json(err);

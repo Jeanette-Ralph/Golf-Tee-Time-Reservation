@@ -22,18 +22,26 @@ router.post('/signup', async (req, res) => {
                 password: req.body.password,
             })
 
+        // adding in req.session save
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+
+            res.status(200).json(userData);
+        });
+
         console.log('in the signup post request');
         // redirect to the user profile page
-        res.redirect('/');
+        // res.redirect('/');
 
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
+
 // when they login this verifies their password and renders their profile 
 router.post('/login', async (req, res) => {
-    console.log('in login post route');
     try {
 
         const userData = await User.findOne(
@@ -54,10 +62,10 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
+
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.loggedIn = true;
-
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
