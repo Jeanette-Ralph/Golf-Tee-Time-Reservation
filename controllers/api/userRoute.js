@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { json } = require("body-parser");
 const { User, Teetimes } = require("../../models");
 
 // for authenticating the user to view their profile
@@ -29,8 +28,6 @@ router.post("/signup", async (req, res) => {
 
       res.status(200).json(userData);
     });
-
-    console.log("in the signup post request");
   } catch (err) {
     res.status(400).json(err);
   }
@@ -70,8 +67,6 @@ router.post("/login", async (req, res) => {
         message: "You are now logged in!",
       });
     });
-    console.log("-----------userData---------------");
-    console.log(userData);
     // cant have two res it will kill the server!!
   } catch (err) {
     res.status(400).json(err);
@@ -88,15 +83,14 @@ router.get("/", withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
     const timeData = await Teetimes.findAll();
     const time = timeData.map((times) => times.get({ plain: true }));
-    console.log(userData);
     res.render("user", {
       ...user,
       time,
       // append this property loggedIn
       loggedIn: true,
+      // adding email to rendered page
+      email: userData.email,
     });
-    console.log("-----------userData---------------");
-    console.log(time);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -107,7 +101,6 @@ router.post("/logout", async (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
         // redirecting to homepage from logout
-        console.log(loggedIn);
         res.redirect("/");
       });
     }

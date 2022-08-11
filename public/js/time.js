@@ -1,24 +1,13 @@
 const btn = document.querySelectorAll(".book-time");
-const getEmail = document.querySelector("#user-email");
 btn.forEach((btn) => {
-  // btn.addEventListener("click", function () {
-  //   let buttonId = btn.getAttribute("data-id");
-  //   updateTime(buttonId);
-  // });
   btn.addEventListener("click", updateTime);
 });
 
 function updateTime(event) {
-  // event.preventDefault();
-  console.log("buutttoonn");
   const id = event.target.getAttribute("data-id");
-  // we are getting the id
-  console.log(event);
-
   const updateInfo = {
     availability: false,
   };
-  console.log(updateInfo);
 
   let timeUp = fetch(`book/${id}`, {
     method: "PUT",
@@ -27,11 +16,11 @@ function updateTime(event) {
       "Content-Type": "application/json",
     },
   });
-  let email = fetch(`book/send`, {
+  let email = fetch("/api/book/send", {
     method: "POST",
-    // body: JSON.stringify({
-    //   user_email: getEmail
-    // }),
+    body: JSON.stringify({
+      email: "jamesplasencia@gmail.com",
+    }),
     headers: {
       "Content-Type": "application/json",
     },
