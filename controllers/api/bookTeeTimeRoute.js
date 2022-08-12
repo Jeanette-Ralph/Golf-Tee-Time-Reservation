@@ -3,7 +3,7 @@ const { Teetimes, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 const nodemailer = require("nodemailer");
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const timeData = await Teetimes.findAll();
     const time = timeData.map((times) => times.get({ plain: true }));
@@ -39,7 +39,7 @@ router.put("/:id", withAuth, async (req, res) => {
   }
 });
 
-router.post("/send", withAuth, async (req, res) => {
+router.post("/send", async (req, res) => {
   try {
     const eUse = await User.findOne({
       where: { email: req.body.email },
@@ -47,7 +47,7 @@ router.post("/send", withAuth, async (req, res) => {
     const uEmail = eUse.get({ plain: true });
 
     if (!uEmail) {
-      res.status(400).json({ message: "good good" });
+      res.status(400).json({ message: "user email error" });
       return;
     }
     const output = `
