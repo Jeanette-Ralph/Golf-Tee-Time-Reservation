@@ -12,16 +12,15 @@
                     <a class="navbar-item" href="/api/about">
                         About
                     </a>
-                {{#if loggedIn}}
-                
+                    {{#if loggedIn}}
                     <a class="button is-light" id="logout-btn" href="/">
                         Log out
                     </a>
                     {{else}}
-                    <a class="button is-primary" href="api/user/login">
+                    <a class="button is-primary" href="/api/user/login">
                         <strong>Sign up</strong>
                     </a>
-                    <a class="button is-light" href="api/user/login">
+                    <a class="button is-light" href="/api/user/login">
                         Log in
                     </a>
                 </div>
@@ -31,14 +30,14 @@
     </div>
 </nav>
 <section class="hero is-success is-halfheight">
-  <div class="hero-body">
-    <div class="">
-      <p class="title">
-        Golf N Stuff
-      </p>
-      <p class="subtitle">
-        Put your way through a heavenly golf course!
-      </p>
+    <div class="hero-body">
+        <div class="">
+            <p class="title">
+                Golf N Stuff
+            </p>
+            <p class="subtitle">
+                Put your way through a heavenly golf course!
+            </p>
+        </div>
     </div>
-  </div>
 </section>
