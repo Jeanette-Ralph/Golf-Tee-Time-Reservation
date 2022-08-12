@@ -1,14 +1,25 @@
 {{!-- profile for people want to show name, update profile and pass in role for display purpose--}}
 <div class="animate__animated animate__bounce">
-<div class="box">
-Hello,
-<br>{{first_name}} {{last_name}}
-<br>
-Username:
-<br>{{user_name}}
-<br>
-Email:
-<br><span id="user-email">{{email}}</span>
-</div>
-{{!-- do we want to add the tee times booked here? --}}
+    <div class="box has-background-primary-light">
+        <div class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Hello,</p>
+                    <p class="title">{{first_name}} {{last_name}}</p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Username</p>
+                    <p class="title">{{user_name}}</p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Email</p>
+                    <p class="title">{{email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

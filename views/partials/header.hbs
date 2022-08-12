@@ -1,24 +1,19 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="/">
             <img src="/images/gns_logo.png">
         </a>
-
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
     </div>
-
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
             <div class="navbar-item">
-                {{#if loggedIn}}
                 <div class="buttons">
                     <a class="navbar-item" href="/api/about">
                         About
                     </a>
+                {{#if loggedIn}}
+                
                     <a class="button is-light" id="logout-btn" href="/">
                         Log out
                     </a>
@@ -35,3 +30,15 @@
         </div>
     </div>
 </nav>
+<section class="hero is-success is-halfheight">
+  <div class="hero-body">
+    <div class="">
+      <p class="title">
+        Golf N Stuff
+      </p>
+      <p class="subtitle">
+        Put your way through a heavenly golf course!
+      </p>
+    </div>
+  </div>
+</section>
