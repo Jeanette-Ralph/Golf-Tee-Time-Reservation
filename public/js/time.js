@@ -5,6 +5,7 @@ btn.forEach((btn) => {
 
 function updateTime(event) {
   const id = event.target.getAttribute("data-id");
+  const userId = event.target.getAttribute("data-user-id");
   const updateInfo = {
     availability: false,
   };
@@ -19,7 +20,7 @@ function updateTime(event) {
   let email = fetch("/api/book/send", {
     method: "POST",
     body: JSON.stringify({
-      email: "jamesplasencia@gmail.com",
+      email: userId,
     }),
     headers: {
       "Content-Type": "application/json",
