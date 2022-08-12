@@ -42,10 +42,10 @@ router.put("/:id", withAuth, async (req, res) => {
 router.post("/send", async (req, res) => {
   try {
     const eUse = await User.findOne({
-      where: { email: req.body.email },
+      where: { id: req.body.email },
     });
     const uEmail = eUse.get({ plain: true });
-
+    console.log(uEmail);
     if (!uEmail) {
       res.status(400).json({ message: "user email error" });
       return;
