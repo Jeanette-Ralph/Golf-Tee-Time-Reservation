@@ -66,6 +66,7 @@ router.post("/send", async (req, res) => {
       host: process.env.HOST,
       port: process.env.PORTEMAIL,
       secure: true,
+      pool: true, // This is the field you need to add
       auth: {
         user: process.env.USER,
         pass: process.env.PASSWORD,
