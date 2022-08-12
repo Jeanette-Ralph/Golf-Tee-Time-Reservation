@@ -1,25 +1,18 @@
-<section class="section">
-  {{>header}}
-</section>
-<section class="section">
-  {{>profile}}
-</section>
-   
-<div class="animate__animated animate__bounce">
+{{> header}}
+  {{> profile}}
 <table class="table is-fullwidth">
   <thead>
     <tr>
       <th>Teetime</th>
       <th>Availability</th>
       <th>Price</th>
+      <th>Book Times</th>
     </tr>
   </thead>
   {{#each time as |tee_time_start|}}
-  {{> teetime-details}}
+  {{> user-time}}
   {{/each}}
 
 </table>
 </div>
-<section class="section">
-  {{>footer}}
-</section>
+  {{> footer}}

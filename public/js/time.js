@@ -3,7 +3,10 @@ btn.forEach((btn) => {
   btn.addEventListener("click", updateTime);
 });
 
+
+
 function updateTime(event) {
+  console.log(event);
   const id = event.target.getAttribute("data-id");
   const updateInfo = {
     availability: false,
@@ -19,12 +22,13 @@ function updateTime(event) {
   let email = fetch("/api/book/send", {
     method: "POST",
     body: JSON.stringify({
-      email: "jamesplasencia@gmail.com",
+       email: 'oddvidaroad@gmail.com',
     }),
     headers: {
       "Content-Type": "application/json",
     },
   });
+
 
   Promise.all([timeUp, email])
     .then((res) => {
