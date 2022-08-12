@@ -1,0 +1,18 @@
+{{> header}}
+  {{> profile}}
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Teetime</th>
+      <th>Availability</th>
+      <th>Price</th>
+      <th>Book Times</th>
+    </tr>
+  </thead>
+  {{#each time as |tee_time_start|}}
+  {{> user-time}}
+  {{/each}}
+
+</table>
+</div>
+  {{> footer}}
