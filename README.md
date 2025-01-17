@@ -16,7 +16,7 @@ MIT ![licence icon](https://img.shields.io/badge/License-MIT-lavender.svg)
 
 ## 🚀 Project Details
 
-Utilizing Express.js,Node,Handlebars, and MySQL we created an application that allows users to book tee times at our Golf N Stuff golf course. [Demo link](https://golf-n-stuff.herokuapp.com/)
+Utilizing Express.js,Node,Handlebars, and MySQL we created an application that allows users to book tee times at our Golf N Stuff golf course. 
 
 ## 👩‍💻 Usage Information
 
